@@ -2,7 +2,7 @@ import Config
 
 # REST API CONFIGURATION
 config :web_server,
- port: 8085,
+ port: 8080,
  env: Mix.env()
 
 

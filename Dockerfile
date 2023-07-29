@@ -12,13 +12,13 @@ RUN mix release
 FROM elixir 
 ENV MIX_ENV=prod
 WORKDIR /app
-EXPOSE 8082 8080
+EXPOSE 8080
 COPY --from=build_image /app/_build/prod/  /app
-COPY  ISSUINGBANCOLOMBIACA.cer /app/ISSUINGBANCOLOMBIACA.cer
 CMD /app/rel/web_server/bin/web_server start -p 8080 -p 8082
 
-# docker build -t metrics:v19.0 .
-# docker create -p 8082:8082 -p 8080:8080 --name webserverv_metrics  metrics:v2.0
+# docker build -t test-oci-rocha7778:v1.0 .
+# docker build -t oci_example_web_app_rocha7778:v1.0 .
+# docker create -p 8080:8080 --name webserverv  test-oci-rocha7778:v1.0
 # docker start webserverv_metrics
 # docker run -it --rm -p 8080:8080 -p 8082:8082 --name webserver_metrics_v19  metrics:v1.0
 # docker exec -it webserver_metrics_v18 bash

@@ -13,12 +13,6 @@ defmodule MyApp do
   plug(:dispatch)
 
 
-  plug Request.Validator.Plug,
-    register: App.Requests.Registration
-
-#   @timeout Application.get_env(:web_server, :http_timeout, 3000)
-# @cacert_path Application.get_env(:web_server, :cacert_path)
-
   def init(options) do
     options
   end
@@ -54,7 +48,7 @@ defmodule MyApp do
   post "/v1/retrieve" do
     request = DataTypeUtils.normalize(conn.body_params)
     request_body = List.first(request.data)
-   
+
 
     request_body = %{data: [request_body]}
 
@@ -94,35 +88,6 @@ defmodule MyApp do
 
     map_response = %{request_body: request_body, response: response}
 
-    # Calculate the elapsed time and print it to the console
-
-    elapsed_time = micro_seconds / 1_000_000
-
-    :telemetry.execute(
-      [:metrics, :emit],
-      %{value: micro_seconds}
-    )
-
-
-    :telemetry.execute(
-      [:db, :query],
-      %{value: micro_seconds},
-      %{method: "POST", path: "/v1/retrieve"}
-    )
-
-    :telemetry.execute(
-      [:http, :request, :stop],
-      %{value: micro_seconds},
-      %{method: "POST", path: "/v1/retrieve"}
-    )
-
-    :telemetry.execute(
-      [:http, :request, :complete],
-      %{duration: micro_seconds}
-
-    )
-
-    IO.puts("Request took #{elapsed_time} seconds")
 
     HandleResponse.build_response(%{status: 200, body: %{data: [map_response]}}, conn)
   end

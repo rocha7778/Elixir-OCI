@@ -17,7 +17,6 @@ defmodule Todo.Application do
       plug: MyApp,
       options: [port: AppConfig.get_port()]},
       Repo
-      #MetricsExample.Telemetry
     ]
 
     opts = [strategy: :one_for_one, name: __MODULE__]
