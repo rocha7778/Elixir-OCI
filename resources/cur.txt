@@ -1,0 +1,29 @@
+curl --location 'http://localhost:8080/v1/retrieve' \
+--header 'Content-Type: application/json' \
+--data '{
+    "data": [
+        {
+            "account": {
+                "type": "CUENTA_DE_AHORRO",
+                "number": "40674245121"
+            }
+        }
+    ],
+    "header": {
+        "clientId": "fba8fedc768198d8be5e43e332a002dd",
+        "clientSecret": "617c13be355b5bff529da8df4a220a6c"
+    },
+    "request": {
+        "host": "jsonplaceholder.typicode.com",
+        "path": "/posts/1",
+        "port": 443,
+        "method": "GET",
+        "cacert_path": "/lib/priv/cacerts.pem",
+        "timeout": 3000,
+        "verify_peer": false,
+        "schema" : "https"
+    }
+}
+
+
+'

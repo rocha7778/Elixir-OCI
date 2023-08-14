@@ -18,7 +18,11 @@ CMD /app/rel/web_server/bin/web_server start -p 8080 -p 8082
 
 # docker build -t test-oci-rocha7778:v1.0 .
 # docker build -t oci_example_web_app_rocha7778:v1.0 .
+
 # docker create -p 8080:8080 --name webserverv  test-oci-rocha7778:v1.0
+# docker create -p 8080:8080 --name wepapp_rocha7778  oci_example_web_app_rocha7778:v1.0 
+# docker run --name webapp_rocha7778 -p 8080:8080/tcp oci_example_web_app_rocha7778:v1.0
+
 # docker start webserverv_metrics
 # docker run -it --rm -p 8080:8080 -p 8082:8082 --name webserver_metrics_v19  metrics:v1.0
 # docker exec -it webserver_metrics_v18 bash
